@@ -1,0 +1,456 @@
+body {
+  margin: 0 auto;
+  background-color: #162027;
+  padding: 0 20px 20px 20px;
+  border: 5px solid black;
+  color: #FFFFFF;
+  border-color: #FF0000;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  border-radius: 36px;
+}
+ 
+html {
+  background-color: #162027;
+
+}
+
+/* Make the games container a responsive grid */
+.games {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  padding: 24px;
+  border: 5px solid #FF0000;
+  border-radius: 12px;
+  font-size: 24px;
+  background: #181818;
+  max-height: 70vh;      /* Adjust as needed for your layout */
+  overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+
+::-webkit-scrollbar-thumb {
+  background: #FF0000;
+  border-radius: 4px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF0000;
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 8px 8px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  background-color: #162027;
+  transition-duration: 0.4s;
+  border-radius: 6px;
+  border: 5px solid #FF0000;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  margin: auto;
+}
+
+.button1 {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  font-size: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 12px 12px 0 12px; /* <-- Remove bottom padding */
+  background-color: #162027;
+  border-radius: 12px;
+  border: 5px solid #FF0000;
+  transition: background 0.2s;
+  overflow: hidden;
+}
+
+.button1 img {
+  margin-top: 8px;
+  max-width: 90%;
+  max-height: 160px;
+  border-radius: 8px;
+  object-fit: cover;      /* Ensures cropping/filling */
+  aspect-ratio: 16/9;     /* Keeps a nice tile aspect ratio */
+  width: 100%;
+  height: 120px;          /* Fixed height for uniformity */
+  display: block;
+  background: #222;
+}
+
+/* Background options */
+.bg-dark {
+  background-color: #111 !important;
+  color: white !important;
+}
+
+.bg-sky {
+  background-color: #a3cef1 !important;
+  color: black !important;
+}
+
+.bg-yellow {
+  background-color: #f1c40f !important;
+  color: black !important;
+}
+
+.bg-green {
+  background-color: #4caf50 !important;
+  color: white !important;
+}
+
+.bg-matrix {
+  background: url('https://i.gifer.com/3HeL.gif') no-repeat center center fixed !important;
+  background-size: cover !important;
+  color: lime !important;
+}
+
+/* Hide the main vertical scrollbar for the whole page */
+body {
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE and Edge */
+}
+
+body::-webkit-scrollbar {
+  display: none;                /* Chrome, Safari, Opera */
+}
+
+/* Add at the end of your file */
+
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 16px;
+  background: #181818;
+  border-radius: 18px;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.header-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: max-content;
+  pointer-events: none; /* So buttons on right are clickable */
+}
+
+.header-center h1 {
+  margin: 0;
+  font-size: 36px;
+  color: red;
+  white-space: nowrap;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+@media (max-width: 900px) {
+  .header-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .header-center {
+    position: static;
+    transform: none;
+    margin: 8px 0;
+    pointer-events: auto;
+  }
+  .header-right {
+    margin-left: 0;
+    justify-content: flex-end;
+  }
+}
+
+#mainContent, .games {
+  margin-top: 0;
+}
+
+#emojiSelector {
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  z-index: 10;
+}
+
+.games-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+.games-toolbar #rouletteBtn {
+  margin-left: auto;
+}
+
+@media (max-width: 700px) {
+  .header-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .header-bar h1 {
+    font-size: 24px;
+  }
+}
+
+.recently-played-bar {
+  margin: 16px 0 8px 0;
+  font-size: 18px;
+}
+
+.recently-played-list {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 8px 0;
+}
+
+.recently-filter-row {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center both groups */
+  gap: 32px;
+  margin: 16px 0 8px 0;
+  position: relative;
+}
+
+.filter-box-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.recently-filter-row input[type="text"] {
+  width: 40vw;
+  min-width: 180px;
+  max-width: 500px;
+  font-size: 18px;
+  padding: 10px 28px;
+  border-radius: 999px;
+  border: 2px solid #FF0000;
+  outline: none;
+  background: #222;
+  color: #fff;
+  box-sizing: border-box;
+  transition: border 0.2s, box-shadow 0.2s;
+  text-align: center;
+  margin: 0;
+  display: block;
+}
+
+.recently-filter-row input[type="text"]:focus {
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px #FF000033;
+}
+
+.recently-played-thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  border: 2px solid #FF0000;
+  object-fit: cover;
+  background: #222;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.recently-played-thumb:hover {
+  transform: scale(1.08);
+}
+
+html, body {
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent main scrollbar */
+}
+
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+.header-bar,
+#emojiSelector,
+.recently-played-bar,
+.filter-bar {
+  flex-shrink: 0;
+}
+
+.games {
+  flex: 1 1 0;
+  min-height: 0;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+#rouletteBtn {
+  position: relative;
+  background: transparent;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 28px;
+  font-size: 18px;
+  cursor: pointer;
+  outline: none;
+  z-index: 1;
+  overflow: visible;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+#rouletteBtn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  padding: 2px;
+  background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet, red, orange, yellow, green, blue, indigo, violet, red);
+  background-size: 400% 400%;
+  animation: rainbow-spin 12s linear infinite;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes rainbow-spin {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+#rouletteBtn:hover {
+  background: rgba(255,255,255,0.07);
+  box-shadow: 0 0 8px 2px rgba(255,255,255,0.12);
+}
+
+#hackerToggle {
+  background: transparent;
+  border: 2px solid #00ff41;
+  color: #00ff41;
+  border-radius: 999px;
+  padding: 10px 28px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, border-color 0.2s, color 0.2s;
+  outline: none;
+  margin-left: 12px;
+}
+
+#hackerToggle:hover {
+  background: rgba(0,255,65,0.07);
+  box-shadow: 0 0 8px 2px #00ff4133;
+  color: #fff;
+}
+
+.dark-mode {
+  background: #181818 !important;
+  color: #f1f1f1 !important;
+}
+.dark-mode .header-bar,
+.dark-mode .main-layout,
+.dark-mode .games,
+.dark-mode .recently-filter-row,
+.dark-mode #backgroundSelector {
+  background: #222 !important;
+  color: #f1f1f1 !important;
+}
+.dark-mode button,
+.dark-mode select {
+  background: #222 !important;
+  color: #f1f1f1 !important;
+  border-color: #444 !important;
+}
+
+/* Ensure header text stays white regardless of background */
+.header-bar,
+.header-bar * {
+  color: #fff !important;
+}
+
+/* Keep lopackel title red in header */
+.header-bar h1,
+.header-center h1 {
+  color: red !important;
+}
+
+/* Make dropdown button have white text */
+.header-bar select,
+#backgroundSelector select {
+  color: #fff !important;
+  background: #000 !important;
+}
+
+/* For dropdown options (works in most browsers except Firefox) */
+.header-bar select option,
+#backgroundSelector select option {
+  color: #fff !important;
+  background: #000 !important;
+}
+
+.fav-star {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 32px;
+  color: gold;
+  cursor: pointer;
+  user-select: none;
+  transition: filter 0.2s;
+  filter: drop-shadow(0 0 2px #000);
+  z-index: 2;
+}
+.fav-star.fav-active {
+  color: gold;
+  text-shadow: 0 0 8px #ff0, 0 0 2px #000;
+}

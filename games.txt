@@ -1,0 +1,27 @@
+    <a href="https://d3rtzzzsiu7gdr.cloudfront.net/files/funnyshooter2/index.html">
+    funnyshooter2
+    </a>
+    <a href="https://d3rtzzzsiu7gdr.cloudfront.net/files/tagfix/index.html">
+    tag
+    </a>
+    <a href="https://d3rtzzzsiu7gdr.cloudfront.net/files/polytrack/index.html">
+    polytrack
+    </a>
+    <a href="https://d3rtzzzsiu7gdr.cloudfront.net/files/slow-roads/index.html">
+    slowroads.io
+    </a>
+    <a href="https://d3rtzzzsiu7gdr.cloudfront.net/files/slope/game.html">
+    slope
+    </a>
+    <a href="https://d3rtzzzsiu7gdr.cloudfront.net/files/flappybird/index.html">
+    flappy bird
+    </a>
+    <a href="https://d3rtzzzsiu7gdr.cloudfront.net/files/swingo/index.html">
+    swingo
+    </a>
+    <a href="https://d3rtzzzsiu7gdr.cloudfront.net/files/bitlife/game/index.html">
+    bitlife
+    </a>
+    <a href = "https://d3rtzzzsiu7gdr.cloudfront.net/files/snowrider-3d/index.html">
+    snow rider 3d
+    </a>

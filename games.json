@@ -1,0 +1,102 @@
+[
+    {
+        "name": "Fire and Ice",
+        "url": "https://d3rtzzzsiu7gdr.cloudfront.net/files/adofai/index.html",
+        "thumbnail": "./adofai.jpg"
+    },
+    {
+        "name": "Funny shooter",
+        "url": "https://d3rtzzzsiu7gdr.cloudfront.net/files/funnyshooter2/index.html",
+        "thumbnail": "funnyshooter.jpeg"
+    },
+    {
+        "name": "spacehuggers",
+        "url": "https://d3rtzzzsiu7gdr.cloudfront.net/files/space-hug/game.html",
+        "thumbnail": "https://repository-images.githubusercontent.com/405834339/1ea246d2-dfea-44a5-9604-59d01c8fa271"
+    },
+    {
+        "name": "Tag(2-4 players)",
+        "url": "https://d3rtzzzsiu7gdr.cloudfront.net/files/tagfix/index.html",
+        "thumbnail": "tag.jpeg"
+    },
+    {
+        "name": "Polytrack",
+        "url": "https://d3rtzzzsiu7gdr.cloudfront.net/files/polytrack/index.html",
+        "thumbnail": "polytrack.jpeg"
+    },
+    {
+        "name": "Slowroads",
+        "url": "https://d3rtzzzsiu7gdr.cloudfront.net/files/slow-roads/index.html",
+        "thumbnail": "slowroads.jpeg"
+    },
+    {
+        "name": "Slope",
+        "url": "https://d3rtzzzsiu7gdr.cloudfront.net/files/slope/game.html",
+        "thumbnail": "slope.jpeg"
+    },
+    {
+        "name": "Flappy bird",
+        "url": "https://d3rtzzzsiu7gdr.cloudfront.net/files/flappybirb/index.html",
+        "thumbnail": "flappybird.jpg"
+    },
+    {
+        "name": "Snow rider",
+        "url": "https://d3rtzzzsiu7gdr.cloudfront.net/files/snowrider-3d/index.html",
+        "thumbnail": "snowrider.jpeg"
+    },
+    {
+        "name": "Gunspin",
+        "url": "https://d3rtzzzsiu7gdr.cloudfront.net/files/gunspinupdate/index.html",
+        "thumbnail": "gunspin.jpeg"
+    },
+    {
+        "name": "Cluster rush",
+        "url": "https://d3rtzzzsiu7gdr.cloudfront.net/files/cluster-rush/index.html",
+        "thumbnail": "clusterrush.jpeg"
+    },
+    {
+        "name": "ragdoll-archers",
+        "url": "https://d3rtzzzsiu7gdr.cloudfront.net/files/ragdoll-archers/index.html",
+        "thumbnail": "https://th.bing.com/th/id/OIP.Lifz6Te7lmKdAJVVmpxSMwHaEK?rs=1&pid=ImgDetMain"
+    },
+    {
+        "name": "drive-mad",
+        "url": "https://d3rtzzzsiu7gdr.cloudfront.net/files/drive-mad/game/index.html",
+        "thumbnail": "https://fast.startgamer.ru/i/images/30313/origin/game_30313_630da3993be00.jpg"
+    },
+    {
+        "name": "slice_master",
+        "url": "https://d3rtzzzsiu7gdr.cloudfront.net/files/slice-master-cgames/index.html",
+        "thumbnail": "https://images.crazygames.com/slice-master_16x9/20240419083509/slice-master_16x9-cover?auto=format%2Ccompress&q=45&cs=strip&ch=DPR&w=1200&h=630&fit=crop"
+    },
+    {
+        "name": "geomatry_dash(lite)",
+        "url": "https://d3rtzzzsiu7gdr.cloudfront.net/files/geodash1/game.html",
+        "thumbnail": "https://cdn.wallpapersafari.com/38/73/2lsuoa.jpg"
+    },
+    {
+        "name": "StickWars",
+        "url": "https://d3rtzzzsiu7gdr.cloudfront.net/files/infinityduel/game.html",
+        "thumbnail": "https://www.roundgames.net/wp-content/uploads/2022/01/Stick-War-Infinity-Duel.jpg"
+    },
+    {
+        "name": "choir",
+        "url": "https://d3rtzzzsiu7gdr.cloudfront.net/files/choir/game.html",
+        "thumbnail": "https://th.bing.com/th/id/R.cfaecab514f836d0a8009f188e1d77ca?rik=gKw6zvFCirXh9g&riu=http%3a%2f%2fd21u3ic0kp9e91.cloudfront.net%2fmeta%2fchoir.jpg&ehk=HSL7cKU293lfMCY28qYLyiL4X3%2ffnGDaP3Zsg10gBy8%3d&risl=&pid=ImgRaw&r=0"
+    },
+    {
+        "name": "crazy cattle 3d",
+        "url": "https://d3rtzzzsiu7gdr.cloudfront.net/files/crazycattle3d/index.html",
+        "thumbnail": "https://doodlejump2.org/data/image/crazy-cattle-3d-game.png"
+    },
+    {
+        "name": "Air Horn",
+        "url": "https://d3rtzzzsiu7gdr.cloudfront.net/files/airhorn/index.html",
+        "thumbnail": "https://cdn.browsercam.com/headers/com.unex.airhornn-header.png"
+    },
+    {
+        "name": "Bottle Flip 3D",
+        "url": "https://d3rtzzzsiu7gdr.cloudfront.net/files/bf3d/game/index.html",
+        "thumbnail": "./bottleflip.jpg"
+    }
+]

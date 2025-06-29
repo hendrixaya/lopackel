@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>lopackel - Back Page</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+  <div class="main-layout">
+    <div class="header-bar">
+      <div class="header-left">
+        <button id="backBtn" style="font-size: 18px; cursor: pointer; border-radius: 999px; padding: 8px 22px; border: 2px solid #FF0000; background: transparent; color: #FF0000; margin-right: 16px;">
+          ← Back
+        </button>
+        <div id="profile" style="cursor:pointer; user-select:none;">
+          Your avatar: <span id="avatar">😀</span>
+        </div>
+      </div>
+      <div class="header-center">
+        <h1>lopackel</h1>
+      </div>
+      <div class="header-right"></div>
+    </div>
+    <!-- Main content goes here -->
+    <div style="padding: 0; text-align: center; height: calc(100vh - 100px);">
+      <iframe id="gameFrame" src="" style="width: 95vw; height: 80vh; border: none; border-radius: 16px; background: #111;"></iframe>
+    </div>
+  </div>
+  <script>
+  document.getElementById('backBtn').onclick = () => window.close();
+  // Optional: Load avatar from localStorage if you use that feature
+  const saved = localStorage.getItem('chosenEmojiAvatar');
+  if (saved) document.getElementById('avatar').textContent = saved;
+
+  // Get ?url=... parameter and set iframe src
+  function getParam(name) {
+    const url = new URL(window.location.href);
+    return url.searchParams.get(name);
+  }
+  const gameUrl = getParam('url');
+  if (gameUrl) {
+    document.getElementById('gameFrame').src = decodeURIComponent(gameUrl);
+  } else {
+    document.getElementById('gameFrame').src = '';
+  }
+  </script>
+</body>
+</html>
