@@ -1,26 +1,37 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>lopackel</title>
-    <link rel="stylesheet" href="css.css">
+  <title>lopackel</title>
+  <link rel="stylesheet" href="css.css">
+  <style>
+
+  </style>
 </head>
+
 <body>
   <div class="main-layout">
     <div class="header-bar">
       <div class="header-left">
-        <div id="profile" style="cursor:pointer; user-select:none;">
-          Your avatar: <span id="avatar">😀</span> (click to change)
+        </button>
+        <div id="profile"
+          style="cursor:pointer; user-select:none; font-size:14px; padding:6px 14px; border-radius:8px; display:inline-block;">
+          Avatar: <span id="avatar" style="font-size:18px; vertical-align:middle;">😀</span>
         </div>
         <div id="backgroundSelector" style="display: flex; align-items: center; gap: 10px;">
-          <select id="backgroundSelect" style="font-size: 16px; padding: 6px 12px; border-radius: 8px;">
-            <option value="">Default</option>
-            <option value="bg-dark">Dark</option>
-            <option value="bg-sky">Sky Blue</option>
-            <option value="bg-yellow">Yellow</option>
-            <option value="bg-green">Green</option>
-            <option value="bg-matrix">Matrix</option>
-          </select>
-          <button id="themeToggle" style="font-size: 16px; padding: 6px 16px; border-radius: 8px; border: 1px solid #888; background: transparent; cursor: pointer;">
+          <div class="custom-dropdown" id="bgDropdown">
+            <div class="custom-dropdown-selected">Default</div>
+            <div class="custom-dropdown-menu">
+              <div data-value="">Default</div>
+              <div data-value="bg-dark">Dark</div>
+              <div data-value="bg-sky">Sky Blue</div>
+              <div data-value="bg-yellow">Yellow</div>
+              <div data-value="bg-green">Green</div>
+              <div data-value="bg-matrix">Matrix</div>
+            </div>
+          </div>
+          <button id="themeToggle"
+            style="font-size: 16px; padding: 6px 16px; border-radius: 8px; border: 1px solid #888; background: transparent; cursor: pointer;">
             🌙 Dark Mode
           </button>
         </div>
@@ -35,9 +46,15 @@
         <button id="hackerToggle" style="font-size: 18px; cursor: pointer;">
           💻 Hacker Mode
         </button>
+        <button id="addGameBtn" class="themed-btn">
+          ➕ Add Game
+        </button>
       </div>
     </div>
-    <div id="emojiSelector" style="display:none; padding:10px; border:1px solid #ccc; background:#eee; max-width:250px;">
+
+    <!-- Avatar Selector -->
+    <div id="emojiSelector"
+      style="display:none; padding:10px; border:1px solid #ccc; background:#eee; max-width:250px;">
       <p>Select your avatar:</p>
       <span class="emojiChoice" style="font-size:30px; cursor:pointer; margin:5px;">😀</span>
       <span class="emojiChoice" style="font-size:30px; cursor:pointer; margin:5px;">😎</span>
@@ -63,21 +80,41 @@
     <div class="games" id="gamesContainer"></div>
   </div>
 
+  <!-- Suggest a Game Modal -->
+  <div id="suggestGameModal"
+    style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.92); z-index:10001; align-items:center; justify-content:center;">
+    <div
+      style="background:#1a1a1a; color:#ff2222; border-radius:32px; box-shadow:0 0 32px #9008; padding:40px 48px; min-width:320px; max-width:90vw; max-height:80vh; overflow:auto; display:flex; flex-direction:column; gap:18px; align-items:center;">
+      <h2 style="color:#ff2222; margin-bottom:8px;">Suggest a Game</h2>
+      <form id="suggestGameForm" action="https://formspree.io/f/mzzvpdep" method="POST" style="display:flex; flex-direction:column; gap:12px; width:100%;">
+        <input id="suggestGameName" name="Game Name" type="text" placeholder="Game Name" required
+          style="border-radius:12px; border:1.5px solid #900; padding:10px; font-size:18px; background:#222; color:#fff;">
+        <input id="suggestGameUrl" name="Game URL" type="url" placeholder="Game URL" required
+          style="border-radius:12px; border:1.5px solid #900; padding:10px; font-size:18px; background:#222; color:#fff;">
+        <input id="suggestGameThumb" name="Thumbnail URL" type="url" placeholder="Thumbnail Image URL" required
+          style="border-radius:12px; border:1.5px solid #900; padding:10px; font-size:18px; background:#222; color:#fff;">
+        <button type="submit"
+          style="background:#ff2222; color:#fff; border:none; border-radius:12px; padding:12px; font-size:18px; font-weight:bold; cursor:pointer;">Submit</button>
+        <div id="suggestGameMsg" style="color:#ff4444; min-height:20px; text-align:center;"></div>
+      </form>
+      <button id="closeSuggestGame"
+        style="margin-top:10px; background:#ff2222; color:#fff; border:none; border-radius:12px; padding:10px 28px; font-size:1.1rem; font-weight:bold; cursor:pointer;">Close</button>
+    </div>
+  </div>
+
   <script>
-    // Emoji avatar logic
+    localStorage.removeItem('loggedInUser');
+    // --- Avatar logic ---
     const profile = document.getElementById('profile');
     const emojiSelector = document.getElementById('emojiSelector');
     const avatar = document.getElementById('avatar');
     const closeBtn = document.getElementById('closeEmojiSelector');
-
     profile.addEventListener('click', () => {
       emojiSelector.style.display = emojiSelector.style.display === 'none' ? 'block' : 'none';
     });
-
     closeBtn.addEventListener('click', () => {
       emojiSelector.style.display = 'none';
     });
-
     document.querySelectorAll('.emojiChoice').forEach(emoji => {
       emoji.addEventListener('click', () => {
         avatar.textContent = emoji.textContent;
@@ -85,14 +122,12 @@
         localStorage.setItem('chosenEmojiAvatar', emoji.textContent);
       });
     });
-
-    // Restore avatar on load
     document.addEventListener('DOMContentLoaded', () => {
       const saved = localStorage.getItem('chosenEmojiAvatar');
       if (saved) avatar.textContent = saved;
     });
 
-    // Theme toggle
+    // --- Theme toggle ---
     const themeToggle = document.getElementById('themeToggle');
     let darkMode = false;
     if (localStorage.getItem('themeMode') === 'dark') {
@@ -113,29 +148,54 @@
       }
     });
 
-    // Background selector
-    const backgroundSelect = document.getElementById('backgroundSelect');
-    function setBackgroundClass(cls) {
-      document.body.classList.remove('bg-dark', 'bg-sky', 'bg-yellow', 'bg-green', 'bg-matrix');
-      if (cls) {
-        document.body.classList.add(cls);
-        localStorage.setItem('chosenBackgroundClass', cls);
-      } else {
-        localStorage.removeItem('chosenBackgroundClass');
-      }
-    }
-    backgroundSelect.addEventListener('change', () => {
-      setBackgroundClass(backgroundSelect.value);
+    // --- Custom background selector with delayed close ---
+    document.querySelectorAll('.custom-dropdown').forEach(drop => {
+      const selected = drop.querySelector('.custom-dropdown-selected');
+      const menu = drop.querySelector('.custom-dropdown-menu');
+      let closeTimeout = null;
+
+      selected.onclick = () => drop.classList.toggle('open');
+
+      menu.querySelectorAll('div').forEach(opt => {
+        opt.onclick = (e) => {
+          e.stopPropagation();
+          selected.textContent = opt.textContent;
+          drop.classList.remove('open');
+          document.body.classList.remove('bg-dark', 'bg-sky', 'bg-yellow', 'bg-green', 'bg-matrix');
+          if (opt.dataset.value) {
+            document.body.classList.add(opt.dataset.value);
+            localStorage.setItem('chosenBackgroundClass', opt.dataset.value);
+          } else {
+            localStorage.removeItem('chosenBackgroundClass');
+          }
+        };
+      });
+
+      // Delayed close logic
+      drop.addEventListener('mouseleave', () => {
+        closeTimeout = setTimeout(() => {
+          drop.classList.remove('open');
+        }, 500);
+      });
+      drop.addEventListener('mouseenter', () => {
+        if (closeTimeout) {
+          clearTimeout(closeTimeout);
+          closeTimeout = null;
+        }
+        // If user moves mouse back in, keep it open
+        drop.classList.add('open');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!drop.contains(e.target)) drop.classList.remove('open');
+      });
     });
     document.addEventListener('DOMContentLoaded', () => {
       const savedClass = localStorage.getItem('chosenBackgroundClass');
-      if (savedClass) {
-        setBackgroundClass(savedClass);
-        backgroundSelect.value = savedClass;
-      }
+      if (savedClass) document.body.classList.add(savedClass);
     });
 
-    // Hacker mode
+    // --- Hacker mode ---
     const hackerBtn = document.getElementById('hackerToggle');
     let hackerOn = false;
     hackerBtn.addEventListener('click', () => {
@@ -150,21 +210,29 @@
         });
         hackerBtn.textContent = '💻 Normal Mode';
       } else {
-        document.body.style.backgroundColor = 'white';
-        document.body.style.color = 'black';
+        // Restore everything to default by removing inline styles
+        document.body.style.backgroundColor = '';
+        document.body.style.color = '';
         document.querySelectorAll('*').forEach(el => {
           el.style.background = '';
           el.style.color = '';
           el.style.borderColor = '';
         });
-        document.querySelector('h1').style.color = 'red';
+        // Restore h1 color if needed (remove forced red)
+        const h1 = document.querySelector('h1');
+        if (h1) h1.style.color = '';
         hackerBtn.textContent = '💻 Hacker Mode';
+
+        // --- FIX: Restore chatbot background ---
+        const chatbotBox = document.getElementById('chatbotBox');
+        if (chatbotBox) {
+          chatbotBox.style.background = '#181818';
+        }
       }
     });
 
-    // Favorites and dynamic games
+    // --- Favorites and dynamic games ---
     let favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
-
     function updateFavStars() {
       document.querySelectorAll('.button1').forEach(btn => {
         const name = btn.querySelector('.game-title').textContent.trim();
@@ -181,7 +249,6 @@
       });
       sortGamesByFavorite();
     }
-
     function sortGamesByFavorite() {
       const gamesContainer = document.getElementById('gamesContainer');
       if (!gamesContainer) return;
@@ -193,12 +260,10 @@
         const bFav = favorites.includes(nameB);
         if (aFav && !bFav) return -1;
         if (!aFav && bFav) return 1;
-        // Both are favorites or both are not: sort alphabetically
         return nameA.localeCompare(nameB, undefined, { sensitivity: 'base' });
       });
       buttons.forEach(btn => gamesContainer.appendChild(btn));
     }
-
     function setupGameButtonEvents() {
       document.querySelectorAll('.button1').forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -227,18 +292,13 @@
         }
       });
     }
-
     async function loadGames() {
       const res = await fetch('games.json');
       let games = await res.json();
-
-      // Sort games alphabetically by name (case-insensitive)
       games.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
-
       const container = document.getElementById('gamesContainer');
       container.innerHTML = '';
       games.forEach(game => {
-        // Automatically wrap and encode the URL for frame.html
         let url = game.url;
         if (!url.startsWith('frame.html?url=')) {
           url = 'frame.html?url=' + encodeURIComponent(game.url);
@@ -248,15 +308,14 @@
         btn.className = 'button button1';
         btn.setAttribute('data-url', url);
         btn.innerHTML = `
+          <span class="fav-star" title="Favorite this game">☆</span>
           <span class="game-title">${game.name}</span><br>
           <img src="${game.thumbnail}" width="90%">
-          <span class="fav-star" title="Favorite this game">☆</span>
         `;
         container.appendChild(btn);
       });
       setupGameButtonEvents();
       updateFavStars();
-
       // Filter logic
       const input = document.getElementById('filterInput');
       input.addEventListener('input', () => {
@@ -266,7 +325,6 @@
           tile.style.display = text.includes(query) ? '' : 'none';
         });
       });
-
       // Surprise Me button logic
       const rouletteBtn = document.getElementById('rouletteBtn');
       rouletteBtn.onclick = () => {
@@ -292,12 +350,10 @@
         }, 1500);
       };
     }
-
     // Recently played logic
     function addToHistory(title, url, imgSrc) {
       const history = JSON.parse(localStorage.getItem('gameHistory') || '[]');
       history.unshift({ title, url, imgSrc });
-      // Keep only last 3 unique entries
       const unique = [];
       for (let item of history) {
         if (!unique.find(e => e.url === item.url)) {
@@ -308,7 +364,6 @@
       localStorage.setItem('gameHistory', JSON.stringify(unique));
       renderHistory();
     }
-
     function renderHistory() {
       const history = JSON.parse(localStorage.getItem('gameHistory') || '[]').slice(0, 6);
       const list = document.getElementById('recentlyPlayedList');
@@ -330,8 +385,57 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       loadGames();
-      renderHistory();
     });
+
+    // Suggest a Game functionality
+    const suggestGameBtn = document.getElementById('addGameBtn');
+    const suggestGameModal = document.getElementById('suggestGameModal');
+    const closeSuggestGameBtn = document.getElementById('closeSuggestGame');
+    const suggestGameForm = document.getElementById('suggestGameForm');
+    const suggestGameMsg = document.getElementById('suggestGameMsg');
+    suggestGameBtn.addEventListener('click', () => {
+      suggestGameModal.style.display = 'flex';
+    });
+    closeSuggestGameBtn.addEventListener('click', () => {
+      suggestGameModal.style.display = 'none';
+    });
+    suggestGameForm.onsubmit = async function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      suggestGameMsg.textContent = ''; // Clear previous messages
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: data,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          suggestGameMsg.textContent = 'Thank you for your suggestion!';
+          form.reset();
+          setTimeout(() => {
+            suggestGameModal.style.display = 'none';
+            suggestGameMsg.textContent = ''; // Clear message on close
+          }, 2000);
+        } else {
+          const responseData = await response.json();
+          if (responseData.hasOwnProperty('errors')) {
+            suggestGameMsg.textContent = responseData.errors.map(error => error.message).join(", ");
+          } else {
+            suggestGameMsg.textContent = 'Oops! There was a problem submitting your form.';
+          }
+        }
+      } catch (error) {
+        suggestGameMsg.textContent = 'Oops! There was a problem submitting your form.';
+      }
+    };
   </script>
+  </script>
+  <script src=></script>
 </body>
+
 </html>
